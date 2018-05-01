@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Dominion Card Picker</title>
+<style>
+    body {
+        font-family: serif;
+    }
+    ul {
+        width: 250px;
+        list-style-type: none;
+    }
+    .card {
+        font-size: 18px;
+        font-variant: small-caps;
+        border: 1px solid gray;
+        padding: 0.25em;
+        border-radius: 0.25em;
+        margin-bottom: 0.5em;
+    }
+    .coin {
+        background-color: orange;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .coin > * {
+        font-size: 14px;
+        position: relative;
+        top: -2.5px;
+    }
+</style>
+</head>
+<body>
+<p>
+For this game, you'll need the following cards:
+<ul id="cardList"></ul>
+</p>
+<script src="cards.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
