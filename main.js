@@ -44,8 +44,9 @@ fetch('cards.csv').then(function(response) {
     function printCard(listCard) {
         var liElement = document.createElement('li');
         liElement.classList.add('card');
+        liElement.appendChild(document.createTextNode(listCard.name));
         liElement.appendChild(createCoinElement(listCard.cost));
-        liElement.appendChild(document.createTextNode(' ' + listCard.name + ' (' + listCard.expansion + ')'));
+        liElement.appendChild(createExpansionSymbolElement(listCard.expansion))
         var ulElement = document.getElementById('cardList');
         ulElement.appendChild(liElement);
     }
@@ -55,6 +56,26 @@ fetch('cards.csv').then(function(response) {
         coinSpan.classList.add('coin');
         coinSpan.innerHTML = `<span>${value}</span>`
         return coinSpan;
+    }
+
+    function createExpansionSymbolElement(expansionName) {
+        const img = document.createElement('img');
+        img.classList.add('expansion-symbol');
+        img.src = getExpansionImgUri(expansionName);
+
+        const wrapper = document.createElement('span');
+        wrapper.classList.add('expansion-symbol-wrapper');
+        wrapper.appendChild(img);
+        return wrapper;
+    }
+
+    function getExpansionImgUri(expansionName) {
+        switch (expansionName) {
+            case 'Base Game':
+                return 'icons/svg/dominion.svg';
+            default:
+                return `icons/svg/${expansionName.toLowerCase()}.svg`
+        }
     }
 })
 .catch(function() {
